@@ -1,0 +1,35 @@
+#include <Servo.h>
+
+int sw = 0;
+
+int DEG = 0;
+
+Servo servo_3;
+
+void setup()
+{
+  pinMode(5, INPUT);
+  servo_3.attach(3);
+
+  Serial.begin(9600);
+
+}
+
+void loop()
+{
+  sw = digitalRead(5);
+  if (sw == LOW) {
+    servo_3.write(30);
+    DEG = servo_3.read();
+    Serial.print("DEG;");
+    Serial.println(DEG);
+  }
+  if (sw == HIGH) {
+    servo_3.write(150);
+    DEG = servo_3.read();
+    Serial.println("DEG;");
+    Serial.println(DEG);
+    delay(2000); // Wait for 2000 millisecond(s)
+  }
+  servo_3.write(30);
+}
