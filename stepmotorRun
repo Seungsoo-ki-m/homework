@@ -1,0 +1,24 @@
+/* Simple Stepper Motor Control Example Code 
+*/
+// Defines pins numbers
+const int stepPin = 4;
+const int dirPin = 3; 
+int customDelay,customDelayMapped; // 
+void setup() {
+pinMode(stepPin,OUTPUT);
+pinMode(dirPin,OUTPUT);
+digitalWrite(dirPin,HIGH); //
+}
+void loop() {
+customDelayMapped = speedUp(); // 
+digitalWrite(stepPin, HIGH);
+delayMicroseconds(customDelayMapped);
+digitalWrite(stepPin, LOW);
+delayMicroseconds(customDelayMapped);
+}
+// reading the Potentiometer
+int speedUp() {
+int customDelay = analogRead(A0); // 
+int newCustom = map(customDelay, 0, 1023, 300,4000); // 
+return newCustom; 
+}
